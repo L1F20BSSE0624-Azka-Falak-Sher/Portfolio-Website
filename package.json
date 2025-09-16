@@ -1,0 +1,19 @@
+﻿{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "A multi-page static website for Bake & Co bakery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:html": "htmlhint src/**/*.html",
+    "lint:css": "stylelint styles/**/*.css"
+  },
+  "keywords": ["bakery", "website", "portfolio"],
+  "author": "Azka Falak Sher",
+  "license": "MIT",
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  }
+}
