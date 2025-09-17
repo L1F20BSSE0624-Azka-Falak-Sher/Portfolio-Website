@@ -1,0 +1,41 @@
+﻿name: Linting Pipeline
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  linting-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install -g htmlhint stylelint
+        
+    - name: Lint HTML files
+      run: |
+        if ls src/*.html 1> /dev/null 2>&1; then
+          htmlhint src/*.html
+        else
+          echo "No HTML files found to lint"
+        fi
+        
+    - name: Lint CSS files
+      run: |
+        if ls styles/*.css 1> /dev/null 2>&1; then
+          stylelint styles/*.css
+        else
+          echo "No CSS files found to lint"
+        fi
